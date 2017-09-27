@@ -8,15 +8,21 @@ import (
 )
 
 func AddTime(hours []string) (string, error) {
+	var h, m int
 	for _, hour := range hours {
 		hh, mm, err := HourCheck(hour)
 		if err != nil {
-			fmt.Println(err)
-			continue
+			return "", err
 		}
-		fmt.Println(hh, mm)
+		h += hh
+		m += mm
 	}
-	return "10:00", nil
+	if m >= 60 {
+		add := m / 60
+		h += add
+		m = m % 60
+	}
+	return fmt.Sprintf("%d:%02d", h, m), nil
 }
 
 func HourCheck(hour string) (int, int, error) {
