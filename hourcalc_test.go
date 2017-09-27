@@ -8,7 +8,7 @@ func TestPASS(t *testing.T) {
 	if result, e := AddTime(arr); e == nil {
 		t.Log(result)
 	} else {
-		t.Error("ERROR : ", e)
+		t.Error(result, e)
 	}
 }
 
@@ -16,9 +16,9 @@ func TestFail(t *testing.T) {
 	arr := []string{"a", ""}
 
 	if result, e := AddTime(arr); e != nil {
-		t.Log("ok fail", result)
+		t.Log(result)
 	} else {
-		t.Error("ERROR : ", result, e)
+		t.Error(result, e)
 	}
 }
 
@@ -26,8 +26,17 @@ func Test_AddTime_1(t *testing.T) {
 	arr := []string{"22:50", "01:50", "02:00:59"}
 
 	if result, e := AddTime(arr); e == nil {
-		t.Log("ok : ", result)
+		t.Log(result)
 	} else {
-		t.Error("ERROR : ", result, e)
+		t.Error(result, e)
+	}
+}
+func Test_DiffTime_1(t *testing.T) {
+	arr := []string{"22:50", "01:50", "02:00:59"}
+
+	if result, e := DiffTime(arr); e == nil {
+		t.Log(result)
+	} else {
+		t.Error(result, e)
 	}
 }
