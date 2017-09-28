@@ -11,4 +11,11 @@ func main() {
 	if err != nil {
 		fmt.Println(err)
 	}
+
+	hours := []string{"9:45", "10:00", "8:00", "9:00", "", "2:00", "5:00"}
+	hour, err := hc.AddTime(hours)
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println(hour)
 }

@@ -13,12 +13,12 @@ func TestPASS(t *testing.T) {
 }
 
 func TestFail(t *testing.T) {
-	arr := []string{"a", ""}
+	arr := []string{"1:a", "a"}
 
 	if result, e := AddTime(arr); e != nil {
-		t.Log(result)
+		t.Log(result, e)
 	} else {
-		t.Error(result, e)
+		t.Error(result)
 	}
 }
 

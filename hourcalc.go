@@ -11,6 +11,9 @@ import (
 func AddTime(hours []string) (string, error) {
 	var h, m int
 	for _, hour := range hours {
+		if hour == "" {
+			continue
+		}
 		hh, mm, err := HourCheck(hour)
 		if err != nil {
 			return "", err
@@ -29,6 +32,9 @@ func AddTime(hours []string) (string, error) {
 func DiffTime(hours []string) (string, error) {
 	var h, m int
 	for _, hour := range hours {
+		if hour == "" {
+			continue
+		}
 		hh, mm, err := HourCheck(hour)
 		if err != nil {
 			return "", err
@@ -48,16 +54,16 @@ func DiffTime(hours []string) (string, error) {
 func HourCheck(hour string) (int, int, error) {
 	split := strings.Split(hour, ":")
 	if len(split) < 2 {
-		return 0, 0, errors.New("format is not xx:xx")
+		return 0, 0, errors.New(hour + " ==> format is not xx:xx")
 	}
 
 	hh, err := strconv.Atoi(split[0])
 	if err != nil {
-		return 0, 0, errors.New("HH is not numeric")
+		return 0, 0, errors.New(split[0] + " ==> HH is not numeric")
 	}
 	mm, err := strconv.Atoi(split[1])
 	if err != nil {
-		return 0, 0, errors.New("MM is not numeric")
+		return 0, 0, errors.New(split[1] + " ==> MM is not numeric")
 	}
 
 	return hh, mm, nil
