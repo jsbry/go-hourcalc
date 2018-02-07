@@ -8,6 +8,7 @@ import (
 	"strings"
 )
 
+// AddTime 時分の加算
 func AddTime(hours []string) (string, error) {
 	var h, m int
 	for _, hour := range hours {
@@ -29,6 +30,7 @@ func AddTime(hours []string) (string, error) {
 	return fmt.Sprintf("%d:%02d", h, m), nil
 }
 
+// DiffTime 時分の減算
 func DiffTime(hours []string) (string, error) {
 	var h, m int
 	for _, hour := range hours {
@@ -51,6 +53,7 @@ func DiffTime(hours []string) (string, error) {
 	return fmt.Sprintf("%d:%02d", h, m), nil
 }
 
+// HourCheck 時分の形式チェック
 func HourCheck(hour string) (int, int, error) {
 	split := strings.Split(hour, ":")
 	if len(split) < 2 {
