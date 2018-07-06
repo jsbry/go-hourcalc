@@ -10,4 +10,8 @@ go:
   - "1.10"
 
 script:
-  - $HOME/gopath/bin/goveralls -service=travis-ci
+  - make test
+
+after_script:
+  - go get github.com/mattn/goveralls
+  - goveralls -package "." -service=travis-ci
